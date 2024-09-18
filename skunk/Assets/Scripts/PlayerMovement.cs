@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("VelY",y);
 
 
-        if (Input.GetKey("f"))
+        if (Input.GetButtonDown("Fire1"))
         {
             animator.SetBool("Other", false);
             animator.Play("spray");

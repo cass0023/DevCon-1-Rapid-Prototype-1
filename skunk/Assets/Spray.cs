@@ -17,12 +17,8 @@ public class Spray : MonoBehaviour
         // when pressing left click (spraying)
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (charJump.isGrounded == true)
-            {
                 var spray = Instantiate(sprayPrefab, spraySpawnPoint.position, spraySpawnPoint.rotation);
                 spray.GetComponent<Rigidbody>().velocity = spraySpawnPoint.forward * spraySpeed;
-            }
-
         }
     }
 }

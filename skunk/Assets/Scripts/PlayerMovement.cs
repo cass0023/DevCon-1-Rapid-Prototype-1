@@ -11,18 +11,13 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     private float x, y;
-
-    public Rigidbody rb;
-
-    public float JumpHeight = 3;
-
+    public float jumpHeight = 3;
     public Transform groundCheck;
-    public float groundDistance = 0.1f;
-
+    public float GroundDistance = 0.1f;
     public LayerMask GroundMask;
 
     bool isGrounded;
-
+    public Rigidbody rb;
 
     // Update is called once per frame
     void Update()
@@ -37,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("VelY",y);
 
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
             animator.SetBool("Other", false);
             animator.Play("spray");
@@ -54,11 +49,11 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("Other", true);
         }
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, GroundMask);
-
-        if (Input.GetKey("space") && isGrounded)
-        {
-            rb.AddForce(Vector3.up*JumpHeight, ForceMode.Impulse);
+        isGrounded = Physics.CheckSphere(groundCheck.position, GroundDistance, GroundMask);
+        if (Input.GetKey("space") && isGrounded) 
+        { 
+        rb.AddForce (Vector3.up*jumpHeight, ForceMode.Impulse);
         }
     }
+
 }

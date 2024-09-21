@@ -11,12 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     private float x, y;
-    public float jumpHeight = 3;
-    public Transform groundCheck;
-    public float GroundDistance = 0.1f;
-    public LayerMask GroundMask;
-
-    bool isGrounded;
+    public float jumpHeight;
+    public bool isGrounded;
     public Rigidbody rb;
 
     // Update is called once per frame
@@ -48,11 +44,16 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("Other", true);
         }
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, GroundDistance, GroundMask);
         if (Input.GetKey("space") && isGrounded) 
         { 
-        rb.AddForce (Vector3.up*jumpHeight, ForceMode.Impulse);
+            rb.AddForce (Vector3.up*jumpHeight, ForceMode.Impulse);
+            isGrounded = false;
+        }
+    }
+    private void OnCollisionStay(Collision col){
+        //created invisible cube named ground- when player is colliding with ground, player can jump
+        if(col.gameObject.name == "Ground"){
+            isGrounded = true;
         }
     }
 

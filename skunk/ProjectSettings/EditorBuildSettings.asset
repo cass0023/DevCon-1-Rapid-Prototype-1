@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/POLYGON city pack/scene/SceneStart.unity
+    guid: 1f17be612f4bbc347a3d247901ebb42d
+  - enabled: 1
+    path: Assets/POLYGON city pack/scene/Skunks.unity
+    guid: 0aeedfbd72293564aa917a4eafebcd4c
   m_configObjects: {}

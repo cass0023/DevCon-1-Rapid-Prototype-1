@@ -56,4 +56,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnCollisionStay(Collision col)
+    {
+        //Created invisible cube named ground- when player is colliding with ground, player can jump
+        if (col.gameObject.name == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
 }

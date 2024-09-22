@@ -16,8 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public float GroundDistance = 0.1f;
     public LayerMask GroundMask;
 
-    bool isGrounded;
-    public Rigidbody rb;
+   public bool isGrounded;
+   public Rigidbody rb;
 
     // Update is called once per frame
     void Update()

@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("VelY",y);
 
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            animator.SetBool("Other", false);
-            animator.Play("spray");
-        }
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    animator.SetBool("Other", false);
+        //    animator.Play("spray");
+        //}
 
         if (Input.GetKey("c"))
         {
@@ -48,8 +48,6 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("Other", true);
         }
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, GroundDistance, GroundMask);
         if (Input.GetKey("space") && isGrounded) 
         { 
         rb.AddForce (Vector3.up*jumpHeight, ForceMode.Impulse);

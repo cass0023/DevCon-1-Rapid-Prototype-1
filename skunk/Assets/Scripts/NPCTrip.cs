@@ -25,14 +25,17 @@ public class NPCTrip : MonoBehaviour
             Debug.Log("collided with leg " + gameObject.name);
 
             //plays tripping animation on NPC
-            //anim.SetBool("isTripped", true);
+            //anim.Play("isTripped");
+            anim.SetBool("isTripped", true);
+
+
 
         }
         if(collision.gameObject.CompareTag("Spray")){
             Debug.Log(gameObject.name + " has been sprayed");
 
             //plays kneeling animation after colliding with spray
-            //anim.SetBool("isSprayed", true);
+            //anim.Play("isSprayed");
         }
     }
 }

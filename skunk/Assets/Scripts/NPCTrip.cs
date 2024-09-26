@@ -34,8 +34,8 @@ public class NPCTrip : MonoBehaviour
         if(collision.gameObject.CompareTag("Spray")){
             Debug.Log(gameObject.name + " has been sprayed");
 
-            //plays kneeling animation after colliding with spray
-            //anim.Play("isSprayed");
+            anim.SetBool("isSprayed", true);
         }
+
     }
 }

@@ -20,6 +20,7 @@ public class NPCTrip : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter(Collider collision){
         if(collision.gameObject.CompareTag("Player")){
             Debug.Log("collided with leg " + gameObject.name);
@@ -27,15 +28,18 @@ public class NPCTrip : MonoBehaviour
             //plays tripping animation on NPC
             //anim.Play("isTripped");
             anim.SetBool("isTripped", true);
-
-
-
         }
-        if(collision.gameObject.CompareTag("Spray")){
+
+        if(collision.gameObject.CompareTag("Spray"))
+        {
             Debug.Log(gameObject.name + " has been sprayed");
 
+            UIMANAGER.instance.SprayCount++;
+            UIMANAGER.instance.updateSprayCounterUI();
             //plays kneeling animation after colliding with spray
             //anim.Play("isSprayed");
         }
+
+      
     }
 }

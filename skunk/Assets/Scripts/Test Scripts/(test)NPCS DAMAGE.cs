@@ -20,7 +20,6 @@ public class NPCSDAMAGE : MonoBehaviour
         else
 
         {
-
             animator.SetTrigger("Run");
         }
 

@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    //[UI]//
+    [SerializeField]private int npcCount;
+    public TextMeshProUGUI sprayedCounter;
 
     //[spray timer]//
     public float sprayTimer;
     private float timeRemaining;
     public bool hasSprayed;
     //^changes the time until player can spray again
+    public int sprayedNPCs;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,10 +37,15 @@ public class GameManager : MonoBehaviour
                 hasSprayed = false;
             }
         }
+        //checks number of npcs
+        GameObject[] npcs = GameObject.FindGameObjectsWithTag("NPCS");
+        npcCount = npcs.Length;
+        int counter = npcCount - sprayedNPCs;
+        sprayedCounter.text = "" + counter;
+
     }
     public void SprayTimer(){
         timeRemaining = sprayTimer;
         hasSprayed = true;
     }
-
 }

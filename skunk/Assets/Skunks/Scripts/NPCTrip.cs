@@ -5,37 +5,43 @@ using UnityEngine;
 
 public class NPCTrip : MonoBehaviour
 {
-    //for some reason my animator window is all messed up rn and wont let me see nodes
-    //hypothetically this changes the animations of the npcs when interacting with spray and skunk
-    //**need to add breaks in the spline so npc stops moving
-    private Rigidbody rb;
+     public GameManager gameManager;
     private Animator anim;
+
+    public float tripTimer;
+
+    private bool tripped;
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
     }
     void Update()
     {
-        
+        //timer to pause npc movement when tripped
+        float tempTimer = 0;
+        if (tripped){
+            tempTimer = tripTimer;
+        }
+        if(tempTimer > 0){
+            tempTimer += Time.deltaTime;
+        }
+        if (tempTimer >= tripTimer){
+            tempTimer = 0;
+            tripped = false;
+        }
     }
     private void OnTriggerEnter(Collider collision){
         if(collision.gameObject.CompareTag("Player")){
             Debug.Log("collided with leg " + gameObject.name);
-
             //plays tripping animation on NPC
-            //anim.Play("isTripped");
             anim.SetBool("isTripped", true);
-
-
-
         }
         if(collision.gameObject.CompareTag("Spray")){
             Debug.Log(gameObject.name + " has been sprayed");
-
-            anim.SetBool("isSprayed", true);
+            //for ui counter
+            gameManager.sprayedNPCs += 1;
         }
-
     }
+
 }

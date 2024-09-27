@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public bool hasSprayed;
     //^changes the time until player can spray again
     public int sprayedNPCs;
+    public GameObject popup;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,10 @@ public class GameManager : MonoBehaviour
         npcCount = npcs.Length;
         int counter = npcCount - sprayedNPCs;
         sprayedCounter.text = "" + counter;
+
+        if (counter <= 0){
+            popup.SetActive(true);
+        }
 
     }
     public void SprayTimer(){
